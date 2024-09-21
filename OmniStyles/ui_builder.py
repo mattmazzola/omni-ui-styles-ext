@@ -1,12 +1,3 @@
-# Copyright (c) 2022-2023, NVIDIA CORPORATION. All rights reserved.
-#
-# NVIDIA CORPORATION and its licensors retain all intellectual property
-# and proprietary rights in and to this software, related documentation
-# and any modifications thereto. Any use, reproduction, disclosure or
-# distribution of this software and related documentation without an express
-# license agreement from NVIDIA CORPORATION is strictly prohibited.
-#
-
 import os
 from typing import List
 
@@ -29,76 +20,18 @@ from omni.isaac.ui.ui_utils import get_style
 
 class UIBuilder:
     def __init__(self):
-        # Frames are sub-windows that can contain multiple UI elements
         self.frames = []
-
-        # UI elements created using a UIElementWrapper from omni.isaac.ui.element_wrappers
         self.wrapped_ui_elements = []
 
-    ###################################################################################
-    #           The Functions Below Are Called Automatically By extension.py
-    ###################################################################################
-
-    def on_menu_callback(self):
-        """Callback for when the UI is opened from the toolbar.
-        This is called directly after build_ui().
-        """
-        pass
-
-    def on_timeline_event(self, event):
-        """Callback for Timeline events (Play, Pause, Stop)
-
-        Args:
-            event (omni.timeline.TimelineEventType): Event Type
-        """
-        pass
-
-    def on_physics_step(self, step):
-        """Callback for Physics Step.
-        Physics steps only occur when the timeline is playing
-
-        Args:
-            step (float): Size of physics step
-        """
-        pass
-
-    def on_stage_event(self, event):
-        """Callback for Stage Events
-
-        Args:
-            event (omni.usd.StageEventType): Event Type
-        """
-        pass
-
     def cleanup(self):
-        """
-        Called when the stage is closed or the extension is hot reloaded.
-        Perform any necessary cleanup such as removing active callback functions
-        Buttons imported from omni.isaac.ui.element_wrappers implement a cleanup function that should be called
-        """
-        # None of the UI elements in this template actually have any internal state that needs to be cleaned up.
-        # But it is best practice to call cleanup() on all wrapped UI elements to simplify development.
         for ui_elem in self.wrapped_ui_elements:
             ui_elem.cleanup()
 
     def build_ui(self):
-        """
-        Build a custom UI tool to run your extension.
-        This function will be called any time the UI window is closed and reopened.
-        """
-        # Create a UI frame that prints the latest UI event.
         self._create_status_report_frame()
-
-        # Create a UI frame demonstrating simple UI elements for user input
         self._create_simple_editable_fields_frame()
-
-        # Create a UI frame with different button types
         self._create_buttons_frame()
-
-        # Create a UI frame with different selection widgets
         self._create_selection_widgets_frame()
-
-        # Create a UI frame with different plotting tools
         self._create_plotting_frame()
 
     def _create_status_report_frame(self):

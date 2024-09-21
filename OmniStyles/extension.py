@@ -1,12 +1,3 @@
-# Copyright (c) 2022-2023, NVIDIA CORPORATION. All rights reserved.
-#
-# NVIDIA CORPORATION and its licensors retain all intellectual property
-# and proprietary rights in and to this software, related documentation
-# and any modifications thereto. Any use, reproduction, disclosure or
-# distribution of this software and related documentation without an express
-# license agreement from NVIDIA CORPORATION is strictly prohibited.
-#
-
 import asyncio
 import gc
 
@@ -21,38 +12,21 @@ from omni.isaac.ui.menu import MenuItemDescription
 from omni.kit.menu.utils import add_menu_items, remove_menu_items
 from omni.usd import StageEventType
 
-from .global_variables import EXTENSION_DESCRIPTION, EXTENSION_TITLE
+from .global_variables import EXTENSION_TITLE
 from .ui_builder import UIBuilder
-
-"""
-This file serves as a basic template for the standard boilerplate operations
-that make a UI-based extension appear on the toolbar.
-
-This implementation is meant to cover most use-cases without modification.
-Various callbacks are hooked up to a seperate class UIBuilder in .ui_builder.py
-Most users will be able to make their desired UI extension by interacting solely with
-UIBuilder.
-
-This class sets up standard useful callback functions in UIBuilder:
-    on_menu_callback: Called when extension is opened
-    on_timeline_event: Called when timeline is stopped, paused, or played
-    on_physics_step: Called on every physics step
-    on_stage_event: Called when stage is opened or closed
-    cleanup: Called when resources such as physics subscriptions should be cleaned up
-    build_ui: User function that creates the UI they want.
-"""
 
 
 class Extension(omni.ext.IExt):
     def on_startup(self, ext_id: str):
-        """Initialize extension and UI elements"""
-
         self.ext_id = ext_id
         self._usd_context = omni.usd.get_context()
 
-        # Build Window
         self._window = ScrollingWindow(
-            title=EXTENSION_TITLE, width=600, height=500, visible=False, dockPreference=ui.DockPreference.LEFT_BOTTOM
+            title=EXTENSION_TITLE,
+            width=600,
+            height=500,
+            visible=False,
+            dockPreference=ui.DockPreference.LEFT_BOTTOM,
         )
         self._window.set_visibility_changed_fn(self._on_window)
 
@@ -69,10 +43,8 @@ class Extension(omni.ext.IExt):
 
         add_menu_items(self._menu_items, EXTENSION_TITLE)
 
-        # Filled in with User Functions
         self.ui_builder = UIBuilder()
 
-        # Events
         self._usd_context = omni.usd.get_context()
         self._physxIFace = _physx.acquire_physx_interface()
         self._physx_subscription = None
@@ -88,6 +60,7 @@ class Extension(omni.ext.IExt):
 
         if self._window:
             self._window = None
+
         self.ui_builder.cleanup()
         gc.collect()
 

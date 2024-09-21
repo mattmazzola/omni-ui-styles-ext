@@ -11,7 +11,7 @@ custom UI tools with minimal boilerplate code.
 The template is well documented and is meant to be self-explanatory to the user should they
 start reading the provided python files.  A short overview is also provided here:
 
-global_variables.py: 
+global_variables.py:
     A script that stores in global variables that the user specified when creating this extension such as the Title and Description.
 
 extension.py:

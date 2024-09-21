@@ -7,9 +7,9 @@ version = "1.0.0"
 category = "Simulation"
 title = "OmniStyles"
 description = "Develop Styles for Omniverse with Figma"
-authors = ["NVIDIA"]
+authors = ["Matthew Mazzola"]
 repository = ""
-keywords = []
+keywords = ["Omniverse", "Figma", "Styles"]
 changelog = "docs/CHANGELOG.md"
 readme = "docs/README.md"
 preview_image = "data/preview.png"
@@ -22,4 +22,4 @@ icon = "data/icon.png"
 "omni.isaac.core" = {}
 
 [[python.module]]
-name = "OmniStyles_python"
+name = "OmniStyles"
