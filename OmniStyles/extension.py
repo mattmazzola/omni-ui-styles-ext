@@ -24,23 +24,27 @@ class Extension(omni.ext.IExt):
         self.ui_builder = UIBuilder()
 
         name = EXTENSION_TITLE
-
-        # Build Window
         self._window = ScrollingWindow(
             title=EXTENSION_TITLE,
             width=600,
             height=500,
-            visible=True,
+            visible=False,
             dockPreference=ui.DockPreference.LEFT_BOTTOM,
         )
-        self._window.set_visibility_changed_fn(self._on_window)
-
-        # Add menu item
+        self._window.set_visibility_changed_fn(self._on_change_window_visibility)
         self._menu_items = [
-            make_menu_item_description(self.ext_id, name, lambda a=weakref.proxy(self): a._menu_callback())
+            make_menu_item_description(
+                ext_id=self.ext_id,
+                name=name,
+                onclick_fun=lambda a=weakref.proxy(self): a._on_click_menu_callback(),
+            )
         ]
 
         add_menu_items(self._menu_items, MENU_BAR_BUTTON_NAME)
+
+        # Make the Window visible by default
+        self._window.visible = True
+        self._on_change_window_visibility(True)
 
     def on_shutdown(self):
         remove_menu_items(self._menu_items, MENU_BAR_BUTTON_NAME)
@@ -51,8 +55,11 @@ class Extension(omni.ext.IExt):
         self.ui_builder.cleanup()
         gc.collect()
 
-    def _on_window(self, visible: bool):
-        omni.log.info(f"{self._on_window.__name__}: {visible}")
+    def _on_click_menu_callback(self):
+        self._window.visible = not self._window.visible
+
+    def _on_change_window_visibility(self, visible: bool):
+        omni.log.info(f"{self._on_change_window_visibility.__name__}: {visible}")
         if self._window.visible:
             self._build_ui()
         else:
@@ -61,10 +68,4 @@ class Extension(omni.ext.IExt):
     def _build_ui(self):
         with self._window.frame:
             with ui.VStack(spacing=5, height=0):
-                self._build_extension_ui()
-
-    def _menu_callback(self):
-        self._window.visible = not self._window.visible
-
-    def _build_extension_ui(self):
-        self.ui_builder.build_ui()
+                self.ui_builder.build_ui()
