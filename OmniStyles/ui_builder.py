@@ -11,15 +11,77 @@ class UIBuilder:
             ui_elem.cleanup()
 
     def build_ui(self):
-        with ui.VStack(
-            spacing=20,
-        ):
+        with ui.VStack(spacing=20):
             ui.Label(
                 "Omni Styles with Figma",
                 alignment=ui.Alignment.CENTER,
-                name="header",
+                name="h1",
             )
 
-            ui.Button(
-                "Button 1",
+            ui.Label(
+                "Buttons",
+                alignment=ui.Alignment.CENTER,
+                name="h2",
             )
+
+            with ui.HStack():
+                ui.Spacer()
+
+                with ui.VStack(
+                    spacing=10,
+                    width=200,
+                ):
+                    button_default = ui.Button(
+                        "Isaac Default",
+                        name="default",
+                    )
+                    button_primary = ui.Button(
+                        "Primary",
+                        name="primary",
+                    )
+                    button_danger = ui.Button(
+                        "Danger",
+                        name="danger",
+                    )
+                    button_secondary = ui.Button(
+                        "Secondary",
+                        name="secondary",
+                    )
+
+                    with ui.HStack(spacing=0):
+                        ui.Label("Disable")
+                        is_disabled_checkbox = ui.CheckBox()
+
+                        def on_checkbox_change(checked_model: ui.SimpleBoolModel):
+                            button_default.enabled = not checked_model.as_bool
+                            button_primary.enabled = not checked_model.as_bool
+                            button_danger.enabled = not checked_model.as_bool
+                            button_secondary.enabled = not checked_model.as_bool
+
+                        is_disabled_checkbox.model.add_value_changed_fn(on_checkbox_change)
+                        is_disabled_checkbox.model.set_value(False)
+
+                ui.Spacer()
+
+            ui.Label(
+                "Dropdowns",
+                alignment=ui.Alignment.CENTER,
+                name="h2",
+            )
+
+            with ui.HStack():
+                ui.Spacer()
+
+                with ui.VStack(
+                    spacing=10,
+                    width=200,
+                ):
+                    combo_box = ui.ComboBox()
+                    for value in ["Default 1", "Default 2", "Default 3"]:
+                        combo_box.model.append_child_item(None, ui.SimpleStringModel(value))
+
+                    combo_box = ui.ComboBox(name="primary")
+                    for value in ["Primary 1", "Primary 2", "Primary 3"]:
+                        combo_box.model.append_child_item(None, ui.SimpleStringModel(value))
+
+                ui.Spacer()

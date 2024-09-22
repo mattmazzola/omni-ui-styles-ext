@@ -14,6 +14,7 @@ from omni.isaac.ui.menu import make_menu_item_description
 from omni.kit.menu.utils import add_menu_items, remove_menu_items
 
 from .global_variables import EXTENSION_TITLE, MENU_BAR_BUTTON_NAME
+from .theme.styles import styles
 from .ui_builder import UIBuilder
 
 
@@ -67,5 +68,9 @@ class Extension(omni.ext.IExt):
 
     def _build_ui(self):
         with self._window.frame:
-            with ui.VStack(spacing=5, height=0):
+            with ui.VStack(
+                spacing=0,
+                height=0,
+                style=styles,
+            ):
                 self.ui_builder.build_ui()
