@@ -4,27 +4,27 @@ general_styles = {}
 
 label_styles = {
     "Label::h1": {
-        "font_size": 42,
+        "font_size": token_font_size_h1,
     },
     "Label::h2": {
-        "font_size": 32,
+        "font_size": token_font_size_h2,
     },
     "Label::h3": {
-        "font_size": 24,
+        "font_size": token_font_size_h3,
     },
     "Label::h4": {
-        "font_size": 18,
+        "font_size": token_font_size_h4,
     },
 }
 
 button_styles = {
     "Button": {
-        "padding": 8,
+        "padding": 9,
         "border_radius": 4,
         "color": token_text_default,
     },
     "Button.Label": {
-        "font_size": 18,
+        "font_size": token_font_size_default,
         "color": token_text_default,
     },
     "Button.Label:hovered": {
