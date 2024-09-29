@@ -19,19 +19,19 @@ label_styles = {
 
 button_styles = {
     "Button": {
-        "padding": 9,
-        "border_radius": 4,
-        "color": token_text_default,
+        "padding": token_button_padding,
+        "border_radius": token_button_radius,
+        "color": token_text_color_default,
     },
     "Button.Label": {
         "font_size": token_font_size_default,
-        "color": token_text_default,
+        "color": token_text_color_default,
     },
     "Button.Label:hovered": {
-        "color": token_text_default,
+        "color": token_text_color_default,
     },
     "Button.Label:disabled": {
-        "color": token_text_isaac_disabled,
+        "color": token_text_color_isaac_disabled,
     },
 }
 
@@ -46,10 +46,10 @@ button_primary_styles = {
         "background_color": token_buttons_primary_pressed,
     },
     "Button.Label::primary": {
-        "color": token_text_default,
+        "color": token_text_color_default,
     },
     "Button.Label::primary:disabled": {
-        "color": token_text_custom_disabled,
+        "color": token_text_color_custom_disabled,
     },
 }
 
@@ -64,7 +64,7 @@ button_secondary_styles = {
         "background_color": token_buttons_secondary_pressed,
     },
     "Button.Label::secondary": {
-        "color": token_text_default,
+        "color": token_text_color_default,
     },
 }
 
@@ -79,7 +79,25 @@ button_danger_styles = {
         "background_color": token_buttons_danger_pressed,
     },
     "Button.Label::danger": {
-        "color": token_text_default,
+        "color": token_text_color_default,
+    },
+}
+
+combobox_styles = {
+    "ComboBox": {
+        "padding": token_button_padding,
+        "border_radius": token_button_radius,
+        "color": token_text_color_default,
+        "font_size": token_font_size_default,
+    },
+    "ComboBox:hovered": {
+        "color": token_text_color_default,
+    },
+    "ComboBox:pressed": {
+        "background_color": token_text_color_custom_pressed,
+    },
+    "ComboBox:disabled": {
+        "color": token_text_color_isaac_disabled,
     },
 }
 
@@ -90,4 +108,5 @@ styles = {
     **button_primary_styles,
     **button_secondary_styles,
     **button_danger_styles,
+    **combobox_styles,
 }
