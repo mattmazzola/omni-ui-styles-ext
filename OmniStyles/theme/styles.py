@@ -1,6 +1,8 @@
 from .tokens import *
 
-general_styles = {}
+general_styles = {
+    # "debug_color": cl("#FF000055"),
+}
 
 label_styles = {
     "Label::h1": {
