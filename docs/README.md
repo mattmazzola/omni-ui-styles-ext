@@ -1,3 +1,8 @@
-# Usage
+# Developing Omniverse Styles using Figma for Prototyping
 
-To enable this extension, run Isaac Sim with the flags --ext-folder {path_to_ext_folder} --enable {ext_directory_name}
+1. Design components in Figma
+1. Extract style system values
+1. Construct style object in Omniverse
+1. Apply styles to Omniverse components
+
+## [Associated Article](https://medium.com/p/c1ce31bece6f)
