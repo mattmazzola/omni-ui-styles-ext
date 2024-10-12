@@ -27,9 +27,25 @@ token_buttons_danger_hover = color_red_43_52
 token_buttons_danger_pressed = color_red_80_26
 token_buttons_danger_disabled = color_red_51_27
 
+token_buttons_normal_default = color_gray_16
+token_buttons_normal_hover = color_gray_39
+token_buttons_normal_pressed = color_gray_27
+token_buttons_normal_disabled = color_gray_21
+
 # Combobox
 token_combobox_radius = radius
 token_combobox_padding = padding
+
+token_combobox_normal_default = color_gray_16
+token_combobox_normal_hover = color_gray_16
+token_combobox_normal_pressed = color_gray_27
+token_combobox_normal_disabled = color_gray_21
+
+# Radio Button
+token_radiobutton_normal_default = color_gray_16
+token_radiobutton_normal_hover = color_gray_39
+token_radiobutton_normal_pressed = color_gray_27
+token_radiobutton_normal_disabled = color_gray_21
 
 # Fonts
 token_font_size_default = font_size_md

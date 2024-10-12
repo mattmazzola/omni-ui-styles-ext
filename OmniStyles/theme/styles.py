@@ -21,9 +21,18 @@ label_styles = {
 
 button_styles = {
     "Button": {
-        "padding": token_button_padding,
+        "background_color": token_buttons_normal_default,
         "border_radius": token_button_radius,
-        "color": token_text_color_default,
+        "padding": token_button_padding,
+    },
+    "Button:hovered": {
+        "background_color": token_buttons_normal_hover,
+    },
+    "Button:pressed": {
+        "background_color": token_buttons_normal_pressed,
+    },
+    "Button:disabled": {
+        "background_color": token_buttons_normal_disabled,
     },
     "Button.Label": {
         "font_size": token_font_size_default,
@@ -47,6 +56,9 @@ button_primary_styles = {
     "Button::primary:pressed": {
         "background_color": token_buttons_primary_pressed,
     },
+    "Button::primary:disabled": {
+        "background_color": token_buttons_primary_disabled,
+    },
     "Button.Label::primary": {
         "color": token_text_color_default,
     },
@@ -65,6 +77,9 @@ button_secondary_styles = {
     "Button::secondary:pressed": {
         "background_color": token_buttons_secondary_pressed,
     },
+    "Button::secondary:disabled": {
+        "background_color": token_buttons_secondary_disabled,
+    },
     "Button.Label::secondary": {
         "color": token_text_color_default,
     },
@@ -80,6 +95,9 @@ button_danger_styles = {
     "Button::danger:pressed": {
         "background_color": token_buttons_danger_pressed,
     },
+    "Button::danger:disabled": {
+        "background_color": token_buttons_danger_disabled,
+    },
     "Button.Label::danger": {
         "color": token_text_color_default,
     },
@@ -88,20 +106,29 @@ button_danger_styles = {
 combobox_styles = {
     "ComboBox": {
         "padding": token_button_padding,
+        "background_color": token_combobox_normal_default,
         "border_radius": token_button_radius,
-        "color": token_text_color_default,
         "font_size": token_font_size_default,
+        "color": token_text_color_default,
     },
     "ComboBox:hovered": {
-        "color": token_text_color_default,
+        "background_color": token_combobox_normal_hover,
     },
     "ComboBox:pressed": {
-        "background_color": token_text_color_custom_pressed,
+        "background_color": token_combobox_normal_pressed,
     },
     "ComboBox:disabled": {
+        "background_color": token_combobox_normal_disabled,
+        "color": token_text_color_isaac_disabled,
+    },
+    "ComboBox.Label": {
+        "color": token_text_color_default,
+    },
+    "ComboBox.Label:disabled": {
         "color": token_text_color_isaac_disabled,
     },
 }
+
 
 styles = {
     **general_styles,
