@@ -51,7 +51,7 @@ class UIBuilder:
                 ui.Spacer()
 
             ui.Label(
-                "Dropdowns",
+                "Combo Boxes",
                 alignment=ui.Alignment.CENTER,
                 name="h2",
             )
